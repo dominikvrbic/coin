@@ -9,12 +9,16 @@ import {
   InMemoryCache,
   ApolloProvider,
 } from "@apollo/client";
-
+const token =
+  "32a58ef4cfb127d83fcaa11d8f0dbde2a82c4c952180eb93b5fed00fecd58b7a";
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
     uri: "https://api.blocktap.io/graphql",
   }),
+  headers: {
+    Authorization: token ? `Bearer ${token}` : "",
+  },
 });
 
 ReactDOM.render(
