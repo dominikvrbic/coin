@@ -11,7 +11,7 @@ const home = css({
   justifyContent: 'center',
 })
 
-export const Home = (props: Props) => {
+const Home = (props: Props) => {
 
   return (
     <div className={home}>
@@ -19,3 +19,4 @@ export const Home = (props: Props) => {
     </div>)
 
 };
+export default Home;

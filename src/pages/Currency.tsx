@@ -52,7 +52,7 @@ const bootomPart = css({
   paddingTop: '15px',
   display: 'flex'
 })
-export const Currency = (props: Props) => {
+const Currency = (props: Props) => {
 
   let { name } = useParams();
   name.replace(/%20/g, " ");
@@ -101,3 +101,4 @@ export const Currency = (props: Props) => {
     </div>
   );
 };
+export default Currency;

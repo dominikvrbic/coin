@@ -1,11 +1,14 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { Router, Switch, Route } from "react-router"
-import { Home } from "./pages/Home";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Home from "./pages/Home";
 
-import { history } from "./stores/routerStore";
 import { css } from "emotion";
-import { Currency } from "./pages/Currency";
+import Currency from "./pages/Currency";
 import { sort } from "./sortresults";
 import { coinStore } from "./stores/coinStore";
 import { Header } from "./components/Header";
@@ -24,7 +27,7 @@ const ApplicationRouter = observer((props: Props) => {
 
   coinStore.setCoins(sort(data));
   return (
-    <Router history={history}>
+    <Router >
       <Header />
       <div className={mainContentStyle}>
         <Switch>

@@ -1,11 +1,21 @@
 import React from 'react'
 import { css } from "emotion";
-import { routerStore } from '../stores/routerStore';
 import { coin } from '../stores/coinStore';
-
+import { Link } from 'react-router-dom'
 interface Props {
     coin?: coin,
 }
+const link = css({
+    color: 'black',
+    cursor: 'pointer',
+    textDecoration: 'none',
+    '&visited': {
+        textDecoration: 'none',
+        color: 'black',
+
+    }
+
+})
 const row = css({
     '& th,td': {
         padding: '10px 1px',
@@ -25,10 +35,13 @@ export const Row = (props: Props) => {
 
     return (
         <tr key={assetName} className={row}>
-            <th className={row} onClick={() => { routerStore.toCurrency(assetName) }} > {assetName}</th>
-            <th className={row} onClick={() => { routerStore.toCurrency(assetName) }} > {marketSymbol}</th>
-            <th className={row} onClick={() => { routerStore.toCurrency(assetName) }} > ${Number(lastPrice) * currentSupply} </th>
-            <th className={row} onClick={() => { routerStore.toCurrency(assetName) }} > ${lastPrice}</th>
-        </tr>
+            <th className={row} >   <Link className={link} to={`/currency/${assetName}`} > {assetName}  </Link ></th>
+            <th className={row} >  <Link className={link} to={`/currency/${assetName}`} > {marketSymbol}</Link ></th>
+            <th className={row} >  <Link className={link} to={`/currency/${assetName}`} > ${Number(lastPrice) * currentSupply}</Link > </th>
+            <th className={row} >  <Link className={link} to={`/currency/${assetName}`} > ${lastPrice}</Link ></th>
+        </tr >
+
+
+
     )
 }
