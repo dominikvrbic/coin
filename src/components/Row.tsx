@@ -5,7 +5,6 @@ import { coin } from '../stores/coinStore';
 
 interface Props {
     coin?: coin,
-    id: number
 }
 const row = css({
     '& th,td': {
@@ -20,16 +19,16 @@ const row = css({
     }
 })
 export const Row = (props: Props) => {
-    const { coin, id } = props;
+    const { coin } = props;
     //@ts-ignore
     const { assetName, marketSymbol, lastPrice, currentSupply } = coin;
 
     return (
-        <tr className={row}>
-            <th className={row} onClick={() => { routerStore.toCurrency(id) }} > {assetName}</th>
-            <th className={row} onClick={() => { routerStore.toCurrency(id) }} > {marketSymbol}</th>
-            <th className={row} onClick={() => { routerStore.toCurrency(id) }} > ${Number(lastPrice) * currentSupply} </th>
-            <th className={row} onClick={() => { routerStore.toCurrency(id) }} > ${lastPrice}</th>
+        <tr key={assetName} className={row}>
+            <th className={row} onClick={() => { routerStore.toCurrency(assetName) }} > {assetName}</th>
+            <th className={row} onClick={() => { routerStore.toCurrency(assetName) }} > {marketSymbol}</th>
+            <th className={row} onClick={() => { routerStore.toCurrency(assetName) }} > ${Number(lastPrice) * currentSupply} </th>
+            <th className={row} onClick={() => { routerStore.toCurrency(assetName) }} > ${lastPrice}</th>
         </tr>
     )
 }

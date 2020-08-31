@@ -1,6 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { Switch, Route, Router } from "react-router-dom";
+import { Router, Switch, Route } from "react-router"
 import { Home } from "./pages/Home";
 
 import { history } from "./stores/routerStore";
@@ -15,7 +15,8 @@ interface Props {
 }
 
 const mainContentStyle = css({
-  flexGrow: 1,
+  display: 'flex',
+  justifyContent: 'center',
 });
 
 const ApplicationRouter = observer((props: Props) => {
@@ -29,7 +30,8 @@ const ApplicationRouter = observer((props: Props) => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route
-            path="/currency/:id"
+            exact
+            path="/currency/:name"
             component={Currency}
           />
         </Switch>

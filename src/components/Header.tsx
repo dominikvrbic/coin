@@ -1,7 +1,8 @@
-import React from 'react'
-import { useForm } from "react-hook-form";
+import React, { useState, useEffect } from 'react'
 import { css } from 'emotion';
 import { routerStore } from '../stores/routerStore';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { coinStore, coin } from '../stores/coinStore';
 
 interface Props {
 
@@ -25,16 +26,47 @@ const title = css({
     cursor: 'pointer'
 
 })
+const search = css({
+    cursor: 'pointer'
+
+})
 export const Header = (props: Props) => {
-    const { register, } = useForm<FormData>();
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+    const handleChange = (event: any) => {
+        setSearchTerm(event.target.value);
+    };
+    useEffect(() => {
+        coinStore.setCoinNames();
+        const results = coinStore.coinNames.filter((coin: string) =>
+            coin.toLowerCase().includes(searchTerm)
+        );
+        setSearchResults(results);
+    }, [searchTerm]);
+
 
     return (
         <div className={wraper}>
             <div className={heder}>
                 <h1 className={title} onClick={() => { routerStore.toHome() }}>Cryptocurrency market</h1>
-                <form className={form} >
-                    <input name="search" ref={register} />
-                </form>
+                <div className={form}>
+                    <input
+                        type="text"
+                        placeholder="Search"
+                        value={searchTerm}
+                        onChange={handleChange}
+                    />
+                </div>
+
+                {searchResults.length !== 25 &&
+                    <ul className={search}>
+                        {searchResults.map(item => (
+                            <li key={item} onClick={() => {
+                                routerStore.toCurrency(item)
+                            }}>{item}</li>
+                        ))}
+                    </ul>}
+
             </div>
         </div>
 

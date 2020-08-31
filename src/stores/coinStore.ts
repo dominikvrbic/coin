@@ -13,6 +13,7 @@ export interface coin {
     highPrice: string;
     currentSupply: string
 }
+
 export class CoinStore {
     @observable
     coins: coins | any = [];
@@ -20,5 +21,15 @@ export class CoinStore {
     setCoins(coins: coins) {
         this.coins = coins;
     }
+    @action.bound
+    findCoin(name: string) {
+        return this.coins.find((coin: coin) => coin.assetName === name)
+    }
+    @observable
+    coinNames: string[] | any = [];
+    setCoinNames() {
+        this.coinNames = this.coins.map((coin: coin) => coin.assetName)
+    }
+
 }
 export const coinStore = new CoinStore();

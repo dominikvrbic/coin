@@ -9,21 +9,20 @@ interface Props {
 }
 const table = css({
     borderCollapse: 'collapse',
-    width: '90%',
-    '@media(max-width: 920px) ': {
-        width: '100%'
-    }
+    width: '100%',
+
 
 })
 export const Table = (props: Props) => {
 
     return (
         <table className={table}>
-            <HederRow />
-            {coinStore.coins.map((coin: coin, index: number) => {
-                return <Row id={index} coin={coin} />
-            })}
-
+            <tbody>
+                <HederRow />
+                {coinStore.coins.map((coin: coin) => {
+                    return <Row coin={coin} />
+                })}
+            </tbody>
         </table>
     )
 }
