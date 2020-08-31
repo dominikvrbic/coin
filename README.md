@@ -54,4 +54,4 @@ You can check Blocktap documentation for more help: https://www.blocktap.io/docs
 
 **Time to spend**
 
-We expect you to spend 4-6 hours to complete this challenge. However you can do the assignment whenever you want within a 24 hour window after you *cloned* the repository. When you're finished send us the url of the *cloned* repository with your code.
+We expect you to spend 4-6 hours to complete this challenge. However you can do the assignment whenever you want within a 24 hour window after you _cloned_ the repository. When you're finished send us the url of the _cloned_ repository with your code.

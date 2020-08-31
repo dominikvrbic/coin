@@ -38,7 +38,6 @@ function App() {
   });
   if (!loading) sort(data);
 
-
   return (
     <div className={appStyle}>
       {loading ? <Spinner /> : <ApplicationRouter />}
