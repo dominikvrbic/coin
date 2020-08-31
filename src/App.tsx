@@ -10,7 +10,9 @@ const appStyle = css({
   minHeight: "100vh",
   display: "flex",
   flexDirection: "column",
+  backgroundColor: "rgba(230, 230, 230, 0.5)",
 });
+
 const GET_COINS = gql`
   query topRanked($limit: Int!) {
     assets(sort: { marketCapRank: ASC }, page: { limit: $limit }) {

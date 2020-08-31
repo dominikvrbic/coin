@@ -11,6 +11,7 @@ const table = css({
   borderCollapse: "collapse",
   width: "100%",
   boxShadow: "0px 3px 25px -15px rgba(0,0,0,0.75)",
+  backgroundColor: "#FFFFFF",
 });
 
 export const Table = (props: Props) => {
@@ -18,9 +19,9 @@ export const Table = (props: Props) => {
     <table className={table}>
       <tbody>
         <HeaderRow />
-        {coinStore.coins.map((coin: coin) => {
-          return <Row coin={coin} />;
-        })}
+        {coinStore.coins.map(
+          (coin: coin) => coin.lastPrice && <Row coin={coin} />
+        )}
       </tbody>
     </table>
   );
