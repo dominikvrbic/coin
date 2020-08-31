@@ -1,22 +1,19 @@
-import React from "react";
-import { Table } from "../components/Table";
-import { css } from "emotion";
+import React from 'react';
+import { Table } from '../components/Table';
+import { css } from 'emotion';
 
-
-
-interface Props {
-}
+interface Props { }
 const home = css({
   display: 'flex',
   justifyContent: 'center',
-})
+  width: '90%',
+});
 
 const Home = (props: Props) => {
-
   return (
     <div className={home}>
       <Table />
-    </div>)
-
+    </div>
+  );
 };
 export default Home;
