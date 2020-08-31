@@ -22,13 +22,13 @@ const row = css({
 export const Row = (props: Props) => {
     const { coin, id } = props;
     //@ts-ignore
-    const { assetName, marketSymbol, marketCapRank, lastPrice } = coin;
+    const { assetName, marketSymbol, lastPrice, currentSupply } = coin;
 
     return (
         <tr className={row}>
             <th className={row} onClick={() => { routerStore.toCurrency(id) }} > {assetName}</th>
             <th className={row} onClick={() => { routerStore.toCurrency(id) }} > {marketSymbol}</th>
-            <th className={row} onClick={() => { routerStore.toCurrency(id) }} > ${marketCapRank} </th>
+            <th className={row} onClick={() => { routerStore.toCurrency(id) }} > ${Number(lastPrice) * currentSupply} </th>
             <th className={row} onClick={() => { routerStore.toCurrency(id) }} > ${lastPrice}</th>
         </tr>
     )

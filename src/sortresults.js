@@ -6,6 +6,7 @@ export const sort = (data) => {
         coin.assetName = currencys.assetName;
         coin.assetSymbol = currencys.assetSymbol;
         coin.marketCapRank = currencys.marketCapRank;
+        coin.currentSupply = currencys.currentSupply;
         const market = currencys.markets.filter((currency) => {
             if (currency.marketSymbol.endsWith(`${currencys.assetSymbol}/USD`)) {
                 return currency.marketSymbol;

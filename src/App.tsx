@@ -16,6 +16,7 @@ const GET_COINS = gql`
       assetName
       assetSymbol
       marketCapRank
+      currentSupply
       markets {
         marketSymbol
         ticker {
@@ -23,8 +24,6 @@ const GET_COINS = gql`
           lastPrice
           lowPrice
           highPrice
-          baseVolume
-          quoteVolume
         }
       }
     }

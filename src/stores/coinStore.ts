@@ -11,7 +11,7 @@ export interface coin {
     lastPrice: string;
     lowPrice: string;
     highPrice: string;
-    baseVolume: string;
+    currentSupply: string
 }
 export class CoinStore {
     @observable
