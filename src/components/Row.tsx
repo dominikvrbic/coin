@@ -1,24 +1,35 @@
 import React from 'react'
 import { css } from "emotion";
-import { Cell } from './Cell';
+import { routerStore } from '../stores/routerStore';
+import { coin } from '../stores/coinStore';
 
 interface Props {
-    rowData?: any
+    coin?: coin,
+    id: number
 }
 const row = css({
-    display: 'flex',
-    alignItems: 'center',
-    padding: '3em',
-    borderBottom: 'black 3px'
+    '& th,td': {
+        padding: '10px 1px',
+        textAlign: 'left',
+        borderBottom: '1px solid #ddd',
+        cursor: 'pointer'
+    },
+    '&:hover': {
+        backgroundColor: ' #f5f5f5'
+
+    }
 })
 export const Row = (props: Props) => {
-    return (
-        <div className={row}>
-            <Cell text='test' />
-            <Cell text='test' />
-            <Cell text='test' />
-            <Cell text='test' />
+    const { coin, id } = props;
+    //@ts-ignore
+    const { assetName, marketSymbol, marketCapRank, lastPrice } = coin;
 
-        </div>
+    return (
+        <tr className={row}>
+            <th className={row} onClick={() => { routerStore.toCurrency(id) }} > {assetName}</th>
+            <th className={row} onClick={() => { routerStore.toCurrency(id) }} > {marketSymbol}</th>
+            <th className={row} onClick={() => { routerStore.toCurrency(id) }} > ${marketCapRank} </th>
+            <th className={row} onClick={() => { routerStore.toCurrency(id) }} > ${lastPrice}</th>
+        </tr>
     )
 }

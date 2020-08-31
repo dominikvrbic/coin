@@ -3,12 +3,15 @@ import { observer } from "mobx-react";
 import { Switch, Route, Router } from "react-router-dom";
 import { Home } from "./pages/Home";
 
-import { history } from "./router/routerStore";
+import { history } from "./stores/routerStore";
 import { css } from "emotion";
 import { Currency } from "./pages/Currency";
+import { sort } from "./sortresults";
+import { coinStore } from "./stores/coinStore";
+import { Header } from "./components/Header";
 
 interface Props {
-  data: 1;
+  data: any;
 }
 
 const mainContentStyle = css({
@@ -17,15 +20,17 @@ const mainContentStyle = css({
 
 const ApplicationRouter = observer((props: Props) => {
   const { data } = props;
+
+  coinStore.setCoins(sort(data));
   return (
     <Router history={history}>
+      <Header />
       <div className={mainContentStyle}>
         <Switch>
-          <Route exact path="/" component={Home} data={data} />
+          <Route exact path="/" component={Home} />
           <Route
-            exact
-            path="/currency/:name"
-            component={() => <Currency data={data} />}
+            path="/currency/:id"
+            component={Currency}
           />
         </Switch>
       </div>

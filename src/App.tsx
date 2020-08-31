@@ -19,7 +19,6 @@ const GET_COINS = gql`
       markets {
         marketSymbol
         ticker {
-          lastPrice
           percentChange
           lastPrice
           lowPrice
@@ -33,10 +32,12 @@ const GET_COINS = gql`
 `;
 
 function App() {
-  const [limit, setlimit] = useState(25);
-  const { loading, error, data } = useQuery(GET_COINS, {
+  const [limit] = useState(25);
+  const { loading, data } = useQuery(GET_COINS, {
     variables: { limit },
   });
+
+
   return (
     <div className={appStyle}>
       {loading ? <Spinner /> : <ApplicationRouter data={data} />}

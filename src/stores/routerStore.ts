@@ -8,8 +8,8 @@ export class CustomRouterStore extends RouterStore {
     this.push('/');
   }
   @action.bound
-  public toProjects(name: string) {
-    this.push(`currency/${name}`);
+  public toCurrency(id: number) {
+    this.push(`currency/${id}`);
   }
 }
 

@@ -1,16 +1,21 @@
 import React from "react";
 import { Table } from "../components/Table";
+import { css } from "emotion";
 
 
 
 interface Props {
-  data: any
 }
+const home = css({
+  display: 'flex',
+  justifyContent: 'center',
+})
 
 export const Home = (props: Props) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { data } = props;
-  return <>
-    <Table data={data} />
-  </>
+
+  return (
+    <div className={home}>
+      <Table />
+    </div>)
+
 };
