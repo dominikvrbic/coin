@@ -9,12 +9,9 @@ import Home from "./pages/Home";
 
 import { css } from "emotion";
 import Currency from "./pages/Currency";
-import { sort } from "./sortresults";
-import { coinStore } from "./stores/coinStore";
 import { Header } from "./components/Header";
 
 interface Props {
-  data: any;
 }
 
 const mainContentStyle = css({
@@ -23,9 +20,7 @@ const mainContentStyle = css({
 });
 
 const ApplicationRouter = observer((props: Props) => {
-  const { data } = props;
 
-  coinStore.setCoins(sort(data));
   return (
     <Router >
       <Header />

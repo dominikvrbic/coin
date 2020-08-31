@@ -1,4 +1,9 @@
 /* eslint-disable array-callback-return */
+
+import {
+    coinStore
+} from "./stores/coinStore";
+
 //not all markets have usd or usdc or usdt so i am using all of them cos. they are all 1 dollar
 export const sort = (data) => {
     const results = data.assets.map((currencys) => {
@@ -37,6 +42,6 @@ export const sort = (data) => {
 
     });
 
-    return results;
+    coinStore.setCoins(results);
 
 }

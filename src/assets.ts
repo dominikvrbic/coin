@@ -1,3 +1,3 @@
 import SpinnerGif from "./images/spinner.gif";
-
-export { SpinnerGif };
+import Search from "./images/search.svg"
+export { SpinnerGif, Search };

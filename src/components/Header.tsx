@@ -3,6 +3,7 @@ import { css } from 'emotion';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { coinStore, coin } from '../stores/coinStore';
 import { Link } from 'react-router-dom';
+import { Search } from '../assets';
 
 interface Props {
 
@@ -20,7 +21,9 @@ const wraper = css({
 
 })
 const form = css({
-    marginLeft: 'auto'
+    marginLeft: 'auto',
+    display: 'flex',
+    alignItems: 'center'
 })
 const title = css({
     color: 'black',
@@ -35,6 +38,14 @@ const title = css({
 })
 const search = css({
     cursor: 'pointer'
+
+})
+const input = css({
+
+    '&input': {
+        outline: 'none',
+
+    }
 
 })
 export const Header = (props: Props) => {
@@ -57,7 +68,9 @@ export const Header = (props: Props) => {
             <div className={heder}>
                 <Link className={title} to='/'>   <h1 >Cryptocurrency market</h1></Link >
                 <div className={form}>
+                    <img src={Search} alt="Search" />
                     <input
+                        className={input}
                         type="text"
                         placeholder="Search"
                         value={searchTerm}

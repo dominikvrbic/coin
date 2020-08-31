@@ -4,6 +4,7 @@ import { css } from "emotion";
 import ApplicationRouter from "./ApplicationRouter";
 import Spinner from "./components/Spinner";
 import { gql, useQuery } from "@apollo/client";
+import { sort } from "./sortresults";
 
 const appStyle = css({
   minHeight: "100vh",
@@ -35,11 +36,12 @@ function App() {
   const { loading, data } = useQuery(GET_COINS, {
     variables: { limit },
   });
+  if (!loading) sort(data);
 
 
   return (
     <div className={appStyle}>
-      {loading ? <Spinner /> : <ApplicationRouter data={data} />}
+      {loading ? <Spinner /> : <ApplicationRouter />}
     </div>
   );
 }
