@@ -1,41 +1,30 @@
 import React from "react";
-import { observer } from "mobx-react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
 
 import { css } from "emotion";
 import Currency from "./pages/Currency";
 import { Header } from "./components/Header";
 
-interface Props {
-}
+interface Props {}
 
 const mainContentStyle = css({
-  display: 'flex',
-  justifyContent: 'center',
+  display: "flex",
+  justifyContent: "center",
 });
 
-const ApplicationRouter = observer((props: Props) => {
-
+const ApplicationRouter = (props: Props) => {
   return (
-    <Router >
+    <Router>
       <Header />
       <div className={mainContentStyle}>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route
-            exact
-            path="/currency/:name"
-            component={Currency}
-          />
+          <Route exact path="/currency/:name" component={Currency} />
         </Switch>
       </div>
     </Router>
   );
-});
+};
 
 export default ApplicationRouter;

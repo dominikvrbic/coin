@@ -53,9 +53,8 @@ const bootomPart = css({
   display: 'flex'
 })
 const Currency = (props: Props) => {
-
+  //@ts-ignore
   let { name } = useParams();
-  name.replace(/%20/g, " ");
   const currency = coinStore.findCoin(decodeURI(name));
   const change = css({
     color: `${currency.percentChange > 0 ? 'green' : 'red'}`,
