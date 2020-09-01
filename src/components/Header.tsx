@@ -103,6 +103,7 @@ export const Header = (props: Props) => {
 
   return (
     <div className={wraper}>
+      <div>Blocktap changed the spec for free api use </div>
       <div className={header}>
         <Link className={title} to="/">
           <h1>Cryptocurrency market</h1>
