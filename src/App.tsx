@@ -34,7 +34,7 @@ const GET_COINS = gql`
 `;
 
 function App() {
-  const [limit] = useState(25);
+  const [limit] = useState(3);
   const { loading, data } = useQuery(GET_COINS, {
     variables: { limit },
   });
