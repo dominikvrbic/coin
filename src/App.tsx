@@ -42,7 +42,7 @@ function App() {
 
   return (
     <div className={appStyle}>
-      {loading ? <Spinner /> : <ApplicationRouter />}
+      {loading ? <Spinner /> : <ApplicationRouter limit={limit} />}
     </div>
   );
 }

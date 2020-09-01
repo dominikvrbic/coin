@@ -6,7 +6,9 @@ import { css } from "emotion";
 import Currency from "./pages/Currency";
 import { Header } from "./components/Header";
 
-interface Props {}
+interface Props {
+  limit: number;
+}
 
 const mainContentStyle = css({
   display: "flex",
@@ -14,9 +16,10 @@ const mainContentStyle = css({
 });
 
 const ApplicationRouter = (props: Props) => {
+  const { limit } = props;
   return (
     <Router>
-      <Header />
+      <Header limit={limit} />
       <div className={mainContentStyle}>
         <Switch>
           <Route exact path="/" component={Home} />

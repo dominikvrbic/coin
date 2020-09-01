@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 import { Search } from "../assets";
 import { useWindowSize } from "react-use";
 
-interface Props {}
+interface Props {
+  limit: number;
+}
 
 const header = css({
   width: "90%",
@@ -84,6 +86,7 @@ const resultItem = css({
 });
 
 export const Header = (props: Props) => {
+  const { limit } = props;
   const { width } = useWindowSize();
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -103,7 +106,6 @@ export const Header = (props: Props) => {
 
   return (
     <div className={wraper}>
-      <div>Blocktap changed the spec for free api use </div>
       <div className={header}>
         <Link className={title} to="/">
           <h1>Cryptocurrency market</h1>
@@ -124,7 +126,7 @@ export const Header = (props: Props) => {
             />
           </div>
 
-          {searchResults.length !== 25 && (
+          {searchResults.length !== limit && (
             <ul className={search}>
               {searchResults.map((item) => (
                 <li key={item} className={resultItem}>
